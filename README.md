@@ -1,32 +1,75 @@
-# React + TypeScript + Vite
+# Portafolio de Fabián Oliva
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Portafolio personal de **Fabián Alejandro Oliva López**, desarrollador Full Stack en formación y estudiante de Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas.
 
-Currently, two official plugins are available:
+El proyecto presenta mi perfil, habilidades, proyectos académicos y medios de contacto. También representa mi progreso como desarrollador y mi propósito de inspirar a otras personas a perseguir sus sueños en la programación.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Características
 
-## React Compiler
+- Diseño moderno con una identidad visual azul y turquesa.
+- Navegación fluida entre las secciones.
+- Adaptación para computadoras, tablets y celulares.
+- Menú móvil accesible.
+- Animaciones suaves al desplazarse.
+- Soporte para usuarios que prefieren movimiento reducido.
+- Enlaces directos a GitHub, LinkedIn y correo electrónico.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Secciones
 
-## Expanding the Oxlint configuration
+- Presentación
+- Sobre mí
+- Habilidades y herramientas
+- Proyectos destacados
+- Contacto
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## Tecnologías
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- HTML5
+- CSS3
+- Git y GitHub
+
+## Proyectos destacados
+
+### ParkLink
+
+Plataforma para consultar y reservar espacios de estacionamiento. Participé en la definición del producto, criterios arquitectónicos, integración inicial del frontend y validación entre la aplicación móvil y el backend.
+
+[Organización de ParkLink](https://github.com/1ASI0657-2610-17949-ParkLink)
+
+### EMSafe
+
+Solución IoT para monitorear contaminación electromagnética mediante sensores, aplicaciones web y móvil, alertas y visualización de mediciones.
+
+[Organización de EMSafe](https://github.com/Desarrollo-de-soluciones-IOT-UPC)
+
+## Ejecución local
+
+Necesitas tener instalado Node.js.
+
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+La aplicación estará disponible normalmente en `http://localhost:5173`.
+
+## Verificación
+
+```bash
+npm run lint
+npm run build
+```
+
+## Contacto
+
+- [GitHub](https://github.com/FabulousFabStar)
+- [LinkedIn](https://www.linkedin.com/in/fabian-oliva-lopez-7407b133b/)
+- Correo: [fabianalejandro1001@gmail.com](mailto:fabianalejandro1001@gmail.com)
+
+---
+
+Construido con dedicación, aprendizaje continuo y el apoyo de mi familia.
