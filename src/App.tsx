@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import profilePhoto from './assets/fabian-profile.png'
 
 const navigation = [
@@ -89,6 +89,34 @@ function LinkedInIcon() {
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
+  useEffect(() => {
+    const elements = document.querySelectorAll<HTMLElement>('[data-reveal]')
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    if (prefersReducedMotion) {
+      elements.forEach((element) => {
+        element.dataset.visible = 'true'
+      })
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const element = entry.target as HTMLElement
+            element.dataset.visible = 'true'
+            observer.unobserve(element)
+          }
+        })
+      },
+      { threshold: 0.12 },
+    )
+
+    elements.forEach((element) => observer.observe(element))
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className="min-h-screen bg-portfolio-bg text-portfolio-text">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-portfolio-bg/80 backdrop-blur-xl">
@@ -168,7 +196,7 @@ function App() {
           <div className="hero-grid absolute inset-0 -z-20 opacity-30" />
 
           <div className="mx-auto grid w-full max-w-7xl items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="max-w-3xl">
+            <div className="max-w-3xl" data-reveal>
               <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-portfolio-cyan/20 bg-portfolio-surface/70 px-4 py-2 text-sm text-portfolio-cyan">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-portfolio-cyan opacity-60" />
@@ -212,7 +240,7 @@ function App() {
               </div>
             </div>
 
-            <div className="relative mx-auto w-full max-w-md lg:mx-0 lg:ml-auto">
+            <div className="reveal-delay-1 relative mx-auto w-full max-w-md lg:mx-0 lg:ml-auto" data-reveal>
               <div className="absolute -inset-4 rotate-3 rounded-[2.5rem] border border-portfolio-cyan/20" />
               <div className="absolute -inset-4 -rotate-3 rounded-[2.5rem] border border-portfolio-blue/20" />
               <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-portfolio-surface p-3 shadow-[0_30px_100px_rgba(0,0,0,0.45)]">
@@ -239,13 +267,13 @@ function App() {
 
         <section id="sobre-mi" className="scroll-mt-20 border-t border-white/5 px-5 py-24 sm:px-8 lg:py-32">
           <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.65fr_1.35fr] lg:gap-20">
-            <div>
+            <div data-reveal>
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-portfolio-cyan">Conóceme</p>
               <h2 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">Sobre mí</h2>
               <div className="mt-7 h-1 w-16 rounded-full bg-gradient-to-r from-portfolio-blue to-portfolio-cyan" />
             </div>
 
-            <div>
+            <div className="reveal-delay-1" data-reveal>
               <p className="text-xl leading-9 text-slate-200 sm:text-2xl sm:leading-10">
                 Soy estudiante de Ingeniería de Software en la UPC y disfruto convertir ideas en soluciones digitales útiles.
               </p>
@@ -275,7 +303,7 @@ function App() {
 
         <section id="habilidades" className="scroll-mt-20 bg-portfolio-surface/35 px-5 py-24 sm:px-8 lg:py-32">
           <div className="mx-auto max-w-7xl">
-            <div className="max-w-2xl">
+            <div className="max-w-2xl" data-reveal>
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-portfolio-cyan">Lo que utilizo</p>
               <h2 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">Habilidades y herramientas</h2>
               <p className="mt-6 text-lg leading-8 text-portfolio-muted">
@@ -283,7 +311,7 @@ function App() {
               </p>
             </div>
 
-            <div className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            <div className="reveal-delay-1 mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-4" data-reveal>
               {skillGroups.map((group) => (
                 <article key={group.title} className="group rounded-3xl border border-white/7 bg-portfolio-bg/70 p-7 transition duration-300 hover:-translate-y-1 hover:border-portfolio-cyan/25">
                   <div className="flex items-center justify-between">
@@ -307,7 +335,7 @@ function App() {
 
         <section id="proyectos" className="scroll-mt-20 px-5 py-24 sm:px-8 lg:py-32">
           <div className="mx-auto max-w-7xl">
-            <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end" data-reveal>
               <div className="max-w-2xl">
                 <p className="text-sm font-semibold uppercase tracking-[0.24em] text-portfolio-cyan">Trabajo en equipo</p>
                 <h2 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">Proyectos destacados</h2>
@@ -322,7 +350,7 @@ function App() {
 
             <div className="mt-14 grid gap-7 lg:grid-cols-2">
               {projects.map((project) => (
-                <article key={project.name} className="group relative overflow-hidden rounded-[2rem] border border-white/8 bg-portfolio-surface/55 p-7 sm:p-9">
+                <article key={project.name} className="group relative overflow-hidden rounded-[2rem] border border-white/8 bg-portfolio-surface/55 p-7 sm:p-9" data-reveal>
                   <div className={`absolute right-0 top-0 h-48 w-48 rounded-full blur-[90px] ${project.accent === 'blue' ? 'bg-portfolio-blue/20' : 'bg-portfolio-cyan/15'}`} />
                   <div className="relative">
                     <div className="flex items-center justify-between">
@@ -354,7 +382,7 @@ function App() {
         </section>
 
         <section id="contacto" className="scroll-mt-20 px-5 pb-20 pt-10 sm:px-8 lg:pb-28">
-          <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.25rem] border border-portfolio-cyan/15 bg-gradient-to-br from-portfolio-blue/20 via-portfolio-surface to-portfolio-bg px-7 py-16 text-center sm:px-12 lg:py-20">
+          <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.25rem] border border-portfolio-cyan/15 bg-gradient-to-br from-portfolio-blue/20 via-portfolio-surface to-portfolio-bg px-7 py-16 text-center sm:px-12 lg:py-20" data-reveal>
             <div className="absolute left-1/2 top-0 h-48 w-96 -translate-x-1/2 rounded-full bg-portfolio-cyan/10 blur-[90px]" />
             <div className="relative mx-auto max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-portfolio-cyan">Construyamos algo juntos</p>
