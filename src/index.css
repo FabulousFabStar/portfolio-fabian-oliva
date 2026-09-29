@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-portfolio-bg: #07111f;
+  --color-portfolio-surface: #0d1b2a;
+  --color-portfolio-blue: #2563eb;
+  --color-portfolio-cyan: #22d3ee;
+  --color-portfolio-text: #f8fafc;
+  --color-portfolio-muted: #94a3b8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #07111f;
+  color: #f8fafc;
+  font-family: Inter, system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::selection {
+  background: rgba(34, 211, 238, 0.25);
+  color: #ffffff;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 88%);
+}
