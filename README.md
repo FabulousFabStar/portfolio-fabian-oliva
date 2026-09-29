@@ -4,6 +4,10 @@ Portafolio personal de **Fabián Alejandro Oliva López**, desarrollador Full St
 
 El proyecto presenta mi perfil, habilidades, proyectos académicos y medios de contacto. También representa mi progreso como desarrollador y mi propósito de inspirar a otras personas a perseguir sus sueños en la programación.
 
+## Sitio publicado
+
+[Visitar el portafolio](https://portfolio-fabian-oliva.vercel.app/)
+
 ## Características
 
 - Diseño moderno con una identidad visual azul y turquesa.
