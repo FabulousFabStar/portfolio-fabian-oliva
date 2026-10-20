@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import profilePhoto from './assets/fabian-profile.png'
+import profilePhoto from './assets/fabian-profile-professional.jpg'
 
 const navigation = [
   { label: 'Inicio', href: '#inicio' },
